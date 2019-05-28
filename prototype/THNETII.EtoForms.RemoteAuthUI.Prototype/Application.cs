@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Http.Headers;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.DependencyInjection;
@@ -78,25 +80,32 @@ namespace THNETII.EtoForms.RemoteAuthUI
                 httpCtx.Request.QueryString = new QueryString(redirectUri.Query);
                 httpCtx.RequestServices = ServiceProvider;
                 //httpCtx.ServiceScopeFactory = ServiceProvider.GetService<IServiceScopeFactory>();
+                var remoteAuthHeaders = new RequestHeaders(httpCtx.Request.Headers)
+                {
+                    Cookie = challengeHeaders.SetCookie.Select(c => new Microsoft.Net.Http.Headers.CookieHeaderValue(c.Name, c.Value)).ToList()
+                };
 
                 var isAuthHandled = await (handler as IAuthenticationRequestHandler).HandleRequestAsync();
                 //var authResult = await handler.AuthenticateAsync();
             }
 
-            ServiceProvider.GetService<IHostApplicationLifetime>()?
-                .StopApplication();
+            await ServiceProvider.GetService<IHostLifetime>()?.StopAsync(default);
         }
 
         private Task<Uri> ExecuteRemoteAuthentication(Uri challangeUri, Uri redirectUri)
         {
             var etoApplication = ServiceProvider.GetRequiredService<Eto.Forms.Application>();
-            
+
             return etoApplication.InvokeAsync(() =>
             {
                 var redirectPart = redirectUri.GetLeftPart(UriPartial.Path);
 
                 var etoWebView = new Eto.Forms.WebView { Url = challangeUri };
-                var etoRemoteAuthDlg = new Eto.Forms.Dialog<Uri> { Content = etoWebView };
+                var etoRemoteAuthDlg = new Eto.Forms.Dialog<Uri>
+                {
+                    Content = etoWebView,
+                    Resizable = true
+                };
 
                 var etoWebLoadedHandler = new EventHandler<Eto.Forms.WebViewLoadedEventArgs>((sender, e) =>
                 {
@@ -105,9 +114,9 @@ namespace THNETII.EtoForms.RemoteAuthUI
 
                     etoRemoteAuthDlg.Close(e.Uri);
                 });
-                //etoWebView.Navigated += etoWebLoadedHandler;
+                etoWebView.Navigated += etoWebLoadedHandler;
                 //etoWebView.DocumentLoaded += etoWebLoadedHandler;
-                etoWebView.DocumentLoading += (sender, e) => etoWebLoadedHandler(sender, e);
+                //etoWebView.DocumentLoading += (sender, e) => etoWebLoadedHandler(sender, e);
                 etoWebView.DocumentTitleChanged += (sender, e) =>
                 {
                     var parent = (sender as Eto.Forms.WebView)?.ParentWindow;
