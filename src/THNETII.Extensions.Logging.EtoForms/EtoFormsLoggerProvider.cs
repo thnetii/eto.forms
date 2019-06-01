@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
@@ -97,11 +98,54 @@ namespace THNETII.Extensions.Logging.EtoForms
 
         public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
         {
+            const string exceptionName = "$" + nameof(exception);
+            const string stateName = nameof(state);
+
             var message = formatter?.Invoke(state, exception);
-            var args = state as IEnumerable<KeyValuePair<string, object>> ?? new[] { new KeyValuePair<string, object>(nameof(state), state) };
-            if (exception is Exception)
-                args = args.Concat(new[] { new KeyValuePair<string, object>('$' + nameof(exception), exception) });
+
+            IEnumerable<KeyValuePair<string, object>> args = null;
+            switch (state)
+            {
+                case IDictionary<string, object> dict:
+                    if (exception is Exception)
+                        dict[exceptionName] = exception;
+                    args = dict;
+                    break;
+                case ICollection<KeyValuePair<string, object>> collection:
+                    if (exception is Exception)
+                        collection.Add(WrapExceptionInKvp(exception));
+                    args = collection;
+                    break;
+                case IEnumerable<KeyValuePair<string, object>> enumerable:
+                    args = enumerable;
+                    if (exception is Exception)
+                        args = args.Concat(WrapExceptionInKvpArray(exception));
+                    break;
+                default:
+                    var stateObj = (object)state;
+                    if (stateObj is null)
+                    {
+                        if (exception is Exception)
+                            args = WrapExceptionInKvpArray(exception);
+                    }
+                    else if (exception is null)
+                        args = new[] { WrapStateInKvp(stateObj) };
+                    else
+                        args = new[]
+                        {
+                            WrapStateInKvp(stateObj),
+                            WrapExceptionInKvp(exception)
+                        };
+                    break;
+            }
             Log(logLevel, eventId, message, args);
+
+            KeyValuePair<string, object>[] WrapExceptionInKvpArray(Exception e) =>
+                new[] { WrapExceptionInKvp(e) };
+            KeyValuePair<string, object> WrapExceptionInKvp(Exception e) =>
+                new KeyValuePair<string, object>(exceptionName, e);
+            KeyValuePair<string, object> WrapStateInKvp(object value) =>
+                new KeyValuePair<string, object>(stateName, value);
         }
 
         protected void Log(LogLevel logLevel, EventId eventId, string message, IEnumerable<KeyValuePair<string, object>> args)
@@ -110,11 +154,42 @@ namespace THNETII.Extensions.Logging.EtoForms
         }
     }
 
-    public class EtoFormsLoggerStackLayoutItem : Eto.Forms.StackLayoutItem
+    public class EtoFormsLogItemControl : Eto.Forms.GroupBox
     {
-        public EtoFormsLoggerStackLayoutItem() : base()
+        public EtoFormsLogItemControl(DateTime timestamp, LogLevel logLevel,
+            string category, EventId eventId, string message)
+            : base()
         {
+            var invariant = System.Globalization.CultureInfo.InvariantCulture;
+            var timestampText = timestamp.ToString(invariant);
+            var logLevelText = logLevel.ToString();
+            var eventIdValueText = eventId.Id.ToString(invariant);
+            var eventIdText = string.IsNullOrWhiteSpace(eventId.Name)
+                ? eventIdValueText
+                : $"{eventIdValueText}: {eventId.Name}";
+            var headingText = $"{category}[{eventIdText}]";
+
+            var headingTableLayout = new Eto.Forms.TableLayout();
             
+
+            var logLevelLabel = new Eto.Forms.Label { Text = logLevelText };
+            var messageLabel = new Eto.Forms.Label
+            {
+                Text = message,
+                Wrap = Eto.Forms.WrapMode.Word
+            };
+
+            var contentStackLayout = new Eto.Forms.StackLayout(
+                new Eto.Forms.StackLayoutItem(logLevelLabel),
+                new Eto.Forms.StackLayoutItem(messageLabel)
+                )
+            {
+                HorizontalContentAlignment = Eto.Forms.HorizontalAlignment.Left,
+                Orientation = Eto.Forms.Orientation.Vertical
+            };
+
+            Text = timestampText;
+            Content = contentStackLayout;
         }
     }
 }

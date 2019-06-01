@@ -11,12 +11,19 @@
   <ItemGroup>
     <PackageReference Include="Eto.Forms" Version="2.5.0-beta.1" />
     <PackageReference Include="Eto.Platform.Wpf" Version="2.5.0-beta.1" />
-    <PackageReference Include="Eto.Platform.Gtk" Version="2.5.0-beta.1" />
     <PackageReference Include="AspNet.Security.OAuth.Twitch" Version="2.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
-    <!--<PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="2.2.2" />-->
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version=" 3.0.0-preview5.19227.9" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version=" 3.0.0-preview5.19227.9" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version=" 3.0.0-preview5.19227.9" />
+  </ItemGroup>
+  <ItemGroup Label="Authentication" Condition="Exists('..\..\aspnet-Security')">
+    <ProjectReference Include="..\..\aspnet-Security\src\Microsoft.AspNetCore.Authentication\Microsoft.AspNetCore.Authentication.csproj" />
+    <ProjectReference Include="..\..\aspnet-Security\src\Microsoft.AspNetCore.Authentication.OAuth\Microsoft.AspNetCore.Authentication.OAuth.csproj" />
+    <!--<ProjectReference Include="..\..\aspnet-Security\src\Microsoft.AspNetCore.Authentication.Google\Microsoft.AspNetCore.Authentication.Google.csproj" />-->
+  </ItemGroup>
+  <ItemGroup Label="Authentication" Condition="!Exists('..\..\aspnet-Security')">
+    <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OAuth" Version="2.2.0" />
+    <!--<PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="2.2.2" />-->
   </ItemGroup>
 </Project>
