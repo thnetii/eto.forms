@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Headers;
@@ -13,11 +15,9 @@ namespace THNETII.EtoForms.RemoteAuthUI
 {
     public class MainForm : Eto.Forms.Form
     {
-        public MainForm() : base()
+        public MainForm(IHost host) : base()
         {
-            Host = CreateHost();
-            CancellationTokenSource = new CancellationTokenSource();
-
+            Host = host ?? throw new ArgumentNullException(nameof(host));
             Content = new Eto.Forms.StackLayout(
                 new Eto.Forms.StackLayoutItem(new Eto.Forms.Button(OnButtonClick) { Text = "Login" })
                 )
@@ -26,22 +26,7 @@ namespace THNETII.EtoForms.RemoteAuthUI
                 VerticalContentAlignment = Eto.Forms.VerticalAlignment.Center,
                 HorizontalContentAlignment = Eto.Forms.HorizontalAlignment.Center
             };
-            ClientSize = new Eto.Drawing.Size(200, 140);
-
-            Load += (sender, e) => Host.StartAsync(CancellationTokenSource.Token);
-            Closing += async (sender, e) =>
-            {
-                CancellationTokenSource.CancelAfter(TimeSpan.FromSeconds(1.5));
-                await Host.StopAsync(CancellationTokenSource.Token);
-            };
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            CancellationTokenSource?.Dispose();
-            Host?.Dispose();
-
-            base.Dispose(disposing);
+            ClientSize = new Eto.Drawing.Size(-1, -1);
         }
 
         private async void OnButtonClick(object sender, EventArgs e)
@@ -81,12 +66,16 @@ namespace THNETII.EtoForms.RemoteAuthUI
 
                     var redirectUri = new Uri($"{request.Scheme}://{request.Host}{request.PathBase}{options.CallbackPath}");
                     var redirectMatch = redirectUri.GetLeftPart(UriPartial.Path);
-                    var redirectWebView = new Eto.Forms.WebView { Url = challengeUri };
+                    var redirectWebView = new Eto.Forms.WebView
+                    {
+                        Url = challengeUri,
+                        Size = new Eto.Drawing.Size(-1, -1)
+                    };
                     var redirectDialog = new Eto.Forms.Dialog<Uri>
                     {
                         Content = redirectWebView,
                         Resizable = true,
-                        ClientSize = new Eto.Drawing.Size(480, 640)
+                        Size = new Eto.Drawing.Size(-1, -1)
                     };
                     redirectWebView.Navigated += (sender, e) =>
                     {
@@ -98,15 +87,27 @@ namespace THNETII.EtoForms.RemoteAuthUI
                     redirectUri = redirectDialog.ShowModal();
 
                     request.Scheme = pathBase.Scheme;
-                    request.Host = HostString.FromUriComponent(pathBase);
-                    request.Path = PathString.FromUriComponent(pathBase);
+                    request.Host = HostString.FromUriComponent(redirectUri);
+                    request.Path = PathString.FromUriComponent(redirectUri);
                     request.QueryString = QueryString.FromUriComponent(redirectUri);
                     var remoteAuthHeaders = new RequestHeaders(request.Headers)
                     {
                         Cookie = challengeHeaders.SetCookie.Select(c => new Microsoft.Net.Http.Headers.CookieHeaderValue(c.Name, c.Value)).ToList()
                     };
 
+                    TaskCompletionSource<IEnumerable<AuthenticationToken>> tokenSource = new TaskCompletionSource<IEnumerable<AuthenticationToken>>();
+                    options.Events.OnTicketReceived = ticket =>
+                    {
+                        tokenSource.SetResult(ticket.Properties.GetTokens());
+                        ticket.HandleResponse();
+                        return Task.CompletedTask;
+                    };
                     var isAuthHandled = await handler.HandleRequestAsync();
+                    if (isAuthHandled)
+                    {
+                        var tokens = await tokenSource.Task;
+
+                    }
 
                     var response = httpCtx.Response;
                 }
@@ -122,36 +123,6 @@ namespace THNETII.EtoForms.RemoteAuthUI
 
         public IHost Host { get; }
         public CancellationTokenSource CancellationTokenSource { get; }
-
-        private IHost CreateHost() =>
-            Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder()
-            .ConfigureHostConfiguration(config =>
-            {
-                config.AddUserSecrets<Application>(optional: true);
-            })
-            .ConfigureServices((ctx, services) =>
-            {
-                services.AddSingleton(this);
-                services.AddAuthentication()
-                .AddTwitch(options =>
-                {
-                    options.ClientId = ctx.Configuration[ConfigurationPath.Combine(nameof(AspNet.Security.OAuth.Twitch), nameof(options.ClientId))];
-                    options.ClientSecret = ctx.Configuration[ConfigurationPath.Combine(nameof(AspNet.Security.OAuth.Twitch), nameof(options.ClientSecret))];
-                    //options.ForceVerify = true;
-                })
-                //.AddGoogle(options =>
-                //{
-                //    options.ClientId = ctx.Configuration[ConfigurationPath.Combine(nameof(Microsoft.AspNetCore.Authentication.Google), nameof(options.ClientId))];
-                //    options.ClientSecret = ctx.Configuration[ConfigurationPath.Combine(nameof(Microsoft.AspNetCore.Authentication.Google), nameof(options.ClientSecret))];
-                //    options.AuthorizationEndpoint += "?prompt=consent"; // Hack so we always get a refresh token, it only comes on the first authorization response
-                //    options.AccessType = "offline";
-                //    options.SaveTokens = true;
-                //    options.ClaimActions.MapJsonSubKey("urn:google:image", "image", "url");
-                //    //options.ClaimActions.Remove(ClaimTypes.GivenName);
-                //})
-                ;
-            })
-            .Build();
 
         private static bool IsRemoteAuthenticationHandler(IAuthenticationHandler handler, out RemoteAuthenticationOptions options)
         {

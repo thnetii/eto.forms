@@ -1,4 +1,9 @@
 ﻿using System;
+using System.Threading.Tasks;
+
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace THNETII.EtoForms.RemoteAuthUI
 {
@@ -10,8 +15,44 @@ namespace THNETII.EtoForms.RemoteAuthUI
             var etoPlatform = Eto.Platform.Detect;
             var etoApplication = new Eto.Forms.Application(etoPlatform);
 
-            using (var mainForm = new MainForm())
-                etoApplication.Run(new MainForm());
+            //var taskCompletionSource = new TaskCompletionSource<IHost>();
+            //var hostingThread = new Thread(o => RunHost(o as TaskCompletionSource<IHost>));
+            //hostingThread.Start(taskCompletionSource);
+            //var host = taskCompletionSource.Task.GetAwaiter().GetResult();
+
+            var host = CreateHost();
+            host.Start();
+
+            etoApplication.Run(new MainForm(host));
+
+            host.StopAsync().GetAwaiter().GetResult();
+        }
+
+        private static void CreateAndRunHost(TaskCompletionSource<IHost> taskCompletionSource)
+        {
+            IHost host = CreateHost();
+            taskCompletionSource.SetResult(host);
+            host.Run();
+        }
+
+        private static IHost CreateHost()
+        {
+            var host = Host.CreateDefaultBuilder()
+                .ConfigureHostConfiguration(c => c.AddUserSecrets(typeof(Program).Assembly, optional: true))
+                .ConfigureServices((ctx, services) =>
+                {
+                    services.AddAuthentication()
+                    .AddTwitch(options =>
+                    {
+                        ctx.Configuration.GetSection(nameof(AspNet.Security.OAuth.Twitch)).Bind(options);
+#if DEBUG
+                        options.ForceVerify = true;
+#endif
+                        options.SaveTokens = true;
+                    });
+                })
+                .Build();
+            return host;
         }
     }
 }

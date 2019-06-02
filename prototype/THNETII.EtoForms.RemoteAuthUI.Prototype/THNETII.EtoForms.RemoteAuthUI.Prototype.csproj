@@ -21,6 +21,9 @@
     <ProjectReference Include="..\..\aspnet-Security\src\Microsoft.AspNetCore.Authentication.OAuth\Microsoft.AspNetCore.Authentication.OAuth.csproj" />
     <!--<ProjectReference Include="..\..\aspnet-Security\src\Microsoft.AspNetCore.Authentication.Google\Microsoft.AspNetCore.Authentication.Google.csproj" />-->
   </ItemGroup>
+  <ItemGroup Label="Authentication" Condition="Exists('..\..\aspnet-HttpAbstractions')">
+    <ProjectReference Include="..\..\aspnet-HttpAbstractions\src\Microsoft.AspNetCore.Authentication.Core\Microsoft.AspNetCore.Authentication.Core.csproj" />
+  </ItemGroup>
   <ItemGroup Label="Authentication" Condition="!Exists('..\..\aspnet-Security')">
     <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OAuth" Version="2.2.0" />
