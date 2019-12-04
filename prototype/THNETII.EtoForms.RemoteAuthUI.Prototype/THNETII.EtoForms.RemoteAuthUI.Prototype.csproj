@@ -12,7 +12,7 @@
     <PackageReference Include="Eto.Forms" Version="2.5.0-beta.1" />
     <PackageReference Include="Eto.Platform.Wpf" Version="2.5.0-beta.1" />
     <PackageReference Include="AspNet.Security.OAuth.Twitch" Version="3.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version=" 3.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version=" 3.1.0" />
   </ItemGroup>
   <ItemGroup Label="Authentication" Condition="Exists('..\..\aspnet-Security')">
     <ProjectReference Include="..\..\aspnet-Security\src\Microsoft.AspNetCore.Authentication\Microsoft.AspNetCore.Authentication.csproj" />
