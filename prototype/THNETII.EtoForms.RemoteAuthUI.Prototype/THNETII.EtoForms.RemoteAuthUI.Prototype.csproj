@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <RootNamespace>THNETII.EtoForms.RemoteAuthUI</RootNamespace>
+    <UseWPF>true</UseWPF>
+    <VersionSuffix>preview1</VersionSuffix>
+    <UserSecretsId>ccfbc2c8-d11f-4083-ad4e-c6815c396219</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Eto.Forms" Version="2.5.0-beta.1" />
+    <PackageReference Include="Eto.Platform.Wpf" Version="2.5.0-beta.1" />
+    <PackageReference Include="AspNet.Security.OAuth.Twitch" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version=" 3.1.0" />
+  </ItemGroup>
+  <ItemGroup Label="Authentication" Condition="Exists('..\..\aspnet-Security')">
+    <ProjectReference Include="..\..\aspnet-Security\src\Microsoft.AspNetCore.Authentication\Microsoft.AspNetCore.Authentication.csproj" />
+    <ProjectReference Include="..\..\aspnet-Security\src\Microsoft.AspNetCore.Authentication.OAuth\Microsoft.AspNetCore.Authentication.OAuth.csproj" />
+    <!--<ProjectReference Include="..\..\aspnet-Security\src\Microsoft.AspNetCore.Authentication.Google\Microsoft.AspNetCore.Authentication.Google.csproj" />-->
+  </ItemGroup>
+  <ItemGroup Label="Authentication" Condition="Exists('..\..\aspnet-HttpAbstractions')">
+    <ProjectReference Include="..\..\aspnet-HttpAbstractions\src\Microsoft.AspNetCore.Authentication.Core\Microsoft.AspNetCore.Authentication.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup Label="Authentication" Condition="!Exists('..\..\aspnet-Security')">
+    <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OAuth" Version="2.2.0" />
+    <!--<PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="2.2.2" />-->
+  </ItemGroup>
+</Project>
