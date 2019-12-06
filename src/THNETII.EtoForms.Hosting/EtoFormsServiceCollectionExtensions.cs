@@ -1,3 +1,5 @@
+using Microsoft.Extensions.Hosting;
+
 using System;
 
 using THNETII.EtoForms.Hosting;
@@ -13,7 +15,7 @@ namespace Microsoft.Extensions.DependencyInjection
             
             services.AddSingleton(_ => Eto.Platform.Detect);
             services.AddSingleton<Eto.Forms.Application>();
-            services.AddHostedService<EtoFormsApplicationHost>();
+            services.AddSingleton<IHostLifetime, EtoFormsApplicationLifetime>();
 
             return services;
         }
