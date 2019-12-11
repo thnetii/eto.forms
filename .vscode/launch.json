@@ -8,11 +8,11 @@
       "name": "THNETII.EtoForms.HostedSample.Gtk",
       "type": "coreclr",
       "request": "launch",
-      "preLaunchTask": "build",
+      "preLaunchTask": "THNETII.EtoForms.HostedSample.Gtk",
       // If you have changed target frameworks, make sure to update the program path.
       "program": "${workspaceFolder}/bin/Debug/netcoreapp3.0/THNETII.EtoForms.HostedSample.Gtk.dll",
       "args": [],
-      "cwd": "${workspaceFolder}/prototype/THNETII.EtoForms.HostedSample",
+      "cwd": "${workspaceFolder}/sample/THNETII.EtoForms.HostedSample",
       // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
       "console": "internalConsole",
       "stopAtEntry": false
@@ -21,11 +21,11 @@
       "name": "THNETII.EtoForms.HostedSample.WinForms",
       "type": "coreclr",
       "request": "launch",
-      "preLaunchTask": "build",
+      "preLaunchTask": "THNETII.EtoForms.HostedSample.WinForms",
       // If you have changed target frameworks, make sure to update the program path.
       "program": "${workspaceFolder}/bin/Debug/netcoreapp3.0/THNETII.EtoForms.HostedSample.WinForms.dll",
       "args": [],
-      "cwd": "${workspaceFolder}/prototype/THNETII.EtoForms.HostedSample",
+      "cwd": "${workspaceFolder}/sample/THNETII.EtoForms.HostedSample",
       // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
       "console": "internalConsole",
       "stopAtEntry": false
@@ -34,11 +34,11 @@
       "name": "THNETII.EtoForms.HostedSample.Wpf",
       "type": "coreclr",
       "request": "launch",
-      "preLaunchTask": "build",
+      "preLaunchTask": "THNETII.EtoForms.HostedSample.Wpf",
       // If you have changed target frameworks, make sure to update the program path.
       "program": "${workspaceFolder}/bin/Debug/netcoreapp3.0/THNETII.EtoForms.HostedSample.Wpf.dll",
       "args": [],
-      "cwd": "${workspaceFolder}/prototype/THNETII.EtoForms.HostedSample",
+      "cwd": "${workspaceFolder}/sample/THNETII.EtoForms.HostedSample",
       // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
       "console": "internalConsole",
       "stopAtEntry": false
