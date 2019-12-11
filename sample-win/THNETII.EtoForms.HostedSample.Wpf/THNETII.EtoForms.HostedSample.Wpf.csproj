@@ -4,19 +4,19 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFrameworks>netcoreapp3.0;net462</TargetFrameworks>
-    <UseWindowsForms>true</UseWindowsForms>
+    <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\THNETII.EtoForms.HostedSample\THNETII.EtoForms.HostedSample.csproj" />
+    <ProjectReference Include="..\..\sample\THNETII.EtoForms.HostedSample\THNETII.EtoForms.HostedSample.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Eto.Platform.Windows" Version="2.5.0-rc.4" />
+    <PackageReference Include="Eto.Platform.Wpf" Version="2.5.0-rc.4" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\THNETII.EtoForms.HostedSample\Program.cs">
+    <Compile Include="..\..\sample\THNETII.EtoForms.HostedSample\Program.cs">
       <Link>Program.cs</Link>
     </Compile>
   </ItemGroup>
