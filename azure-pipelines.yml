@@ -24,6 +24,9 @@ jobs:
         [Ss]ample/*/*.csproj
         [Ss]rc/*/*.csproj
         [Tt]est/*/*.csproj
+      srcProjects: |
+        [Ss]ample/*/*.csproj
+        [Ss]rc/*/*.csproj
     disableWindowsRuntime: true
     addRuntimes:
     - id:           win
@@ -58,6 +61,8 @@ jobs:
         project: |
           [Ss]rc/*/*.csproj
           [Ss]rc-win/*/*.csproj
+          [Ss]ample/*/*.csproj
+          [Ss]ample-win/*/*.csproj
     #- id:           win_no_rid
     #  condition:    ne(variables['SkipWindowsRuntime'], 'true')
     #  displayName:  Windows, 64-bit (No RID)
