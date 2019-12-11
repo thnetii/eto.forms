@@ -1,3 +1,4 @@
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 
 using System;
@@ -16,6 +17,18 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddSingleton(_ => Eto.Platform.Detect);
             services.AddSingleton<Eto.Forms.Application>();
             services.AddSingleton<IHostLifetime, EtoFormsApplicationLifetime>();
+
+            services.AddOptions<EtoFormsOptions>()
+                .Configure<IServiceProvider>((opts, sp) =>
+                {
+                    var con = sp.GetService<ConsoleLifetimeOptions>();
+                    opts.SuppressStatusMessages = con?.SuppressStatusMessages ?? false;
+                })
+                .Validate(opts =>
+                {
+                    opts.Validate();
+                    return true;
+                });
 
             return services;
         }
