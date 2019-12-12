@@ -25,7 +25,6 @@ jobs:
         [Ss]rc/*/*.csproj
         [Tt]est/*/*.csproj
       srcProjects: |
-        [Ss]ample/*/*.csproj
         [Ss]rc/*/*.csproj
     disableWindowsRuntime: true
     addRuntimes:
@@ -61,36 +60,3 @@ jobs:
         project: |
           [Ss]rc/*/*.csproj
           [Ss]rc-win/*/*.csproj
-          [Ss]ample/*/*.csproj
-          [Ss]ample-win/*/*.csproj
-    #- id:           win_no_rid
-    #  condition:    ne(variables['SkipWindowsRuntime'], 'true')
-    #  displayName:  Windows, 64-bit (No RID)
-    #  pool:
-    #    vmImage:    windows-latest
-    #  restore:
-    #    projects: |
-    #      [Ss]ample/*/*.csproj
-    #      [Ss]rc/*/*.csproj
-    #      [Tt]est/*/*.csproj
-    #      [Ss]ample-win/*/*.csproj
-    #      [Ss]rc-win/*/*.csproj
-    #      [Tt]est-win/*/*.csproj
-    #  build:
-    #    projects: |
-    #      [Ss]ample/*/*.csproj
-    #      [Ss]rc/*/*.csproj
-    #      [Tt]est/*/*.csproj
-    #      [Ss]ample-win/*/*.csproj
-    #      [Ss]rc-win/*/*.csproj
-    #      [Tt]est-win/*/*.csproj
-    #  test:
-    #    project: |
-    #      [Tt]est/*/*.csproj
-    #      [Tt]est-win/*/*.csproj
-    #  pack:
-    #    projects: |
-    #      [Ss]rc-win/*/*.csproj
-    #  publish:
-    #    projects: |
-    #      [Ss]rc-win/*/*.csproj
