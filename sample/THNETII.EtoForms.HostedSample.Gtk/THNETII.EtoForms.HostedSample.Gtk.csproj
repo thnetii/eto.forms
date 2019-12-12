@@ -3,7 +3,9 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>netcoreapp3.0;net462</TargetFrameworks>
+    <TargetFrameworks>netcoreapp3.0</TargetFrameworks>
+    <TargetFrameworks Condition="'$(NoNetFramework)'!='true'">$(TargetFrameworks);net462</TargetFrameworks>
+    <TargetFramework Condition="'$(BuildDefaultTargetFramework)'!=''">netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
