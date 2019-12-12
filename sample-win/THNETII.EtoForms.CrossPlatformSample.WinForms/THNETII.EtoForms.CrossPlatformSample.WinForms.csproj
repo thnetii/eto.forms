@@ -3,12 +3,12 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFrameworks>netcoreapp3.0;net462</TargetFrameworks>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\THNETII.EtoForms.HostedSample\THNETII.EtoForms.HostedSample.csproj" />
+    <ProjectReference Include="..\..\sample\THNETII.EtoForms.CrossPlatformSample\THNETII.EtoForms.CrossPlatformSample.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\THNETII.EtoForms.HostedSample\Program.cs">
+    <Compile Include="..\..\sample\THNETII.EtoForms.CrossPlatformSample\Program.cs">
       <Link>Program.cs</Link>
     </Compile>
   </ItemGroup>

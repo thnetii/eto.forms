@@ -1,14 +1,14 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFrameworks>netcoreapp3.0;net462</TargetFrameworks>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\THNETII.EtoForms.CrossPlatformSample\THNETII.EtoForms.CrossPlatformSample.csproj" />
+    <ProjectReference Include="..\..\sample\THNETII.EtoForms.HostedSample\THNETII.EtoForms.HostedSample.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\THNETII.EtoForms.CrossPlatformSample\Program.cs">
+    <Compile Include="..\..\sample\THNETII.EtoForms.HostedSample\Program.cs">
       <Link>Program.cs</Link>
     </Compile>
   </ItemGroup>

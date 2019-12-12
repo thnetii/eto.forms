@@ -1,17 +1,77 @@
 {
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "build",
-            "command": "dotnet build",
-            "type": "shell",
-            "group": "build",
-            "presentation": {
-                "reveal": "always"
-            },
-            "problemMatcher": "$msCompile"
-        }
-    ]
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "THNETII.EtoForms.Hosting",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "src/THNETII.EtoForms.Hosting"
+      ],
+      "type": "shell",
+      "group": "build",
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "THNETII.EtoForms.HostedSample",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "sample/THNETII.EtoForms.HostedSample"
+      ],
+      "type": "shell",
+      "group": "build",
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "THNETII.EtoForms.HostedSample.Gtk",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "sample/THNETII.EtoForms.HostedSample.Gtk"
+      ],
+      "type": "shell",
+      "group": "build",
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "THNETII.EtoForms.HostedSample.WinForms",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "sample-win/THNETII.EtoForms.HostedSample.WinForms"
+      ],
+      "type": "shell",
+      "group": "build",
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "THNETII.EtoForms.HostedSample.Wpf",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "sample-win/THNETII.EtoForms.HostedSample.Wpf"
+      ],
+      "type": "shell",
+      "group": "build",
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": "$msCompile"
+    }
+  ]
 }
