@@ -19,3 +19,44 @@ jobs:
     presteps:
     - checkout:   self
       submodules: true
+    overrideCommon:
+      allProjects: |
+        [Ss]ample/*/*.csproj
+        [Ss]rc/*/*.csproj
+        [Tt]est/*/*.csproj
+      srcProjects: |
+        [Ss]rc/*/*.csproj
+    disableWindowsRuntime: true
+    addRuntimes:
+    - id:           win
+      condition:    ne(variables['SkipWindowsRuntime'], 'true')
+      argValue:     win10-x64
+      displayName:  Windows, 64-bit
+      pool:
+        vmImage:    windows-latest
+      restore:
+        projects: |
+          [Ss]ample/*/*.csproj
+          [Ss]rc/*/*.csproj
+          [Tt]est/*/*.csproj
+          [Ss]ample-win/*/*.csproj
+          [Ss]rc-win/*/*.csproj
+          [Tt]est-win/*/*.csproj
+      build:
+        projects: |
+          [Ss]ample/*/*.csproj
+          [Ss]rc/*/*.csproj
+          [Tt]est/*/*.csproj
+          [Ss]ample-win/*/*.csproj
+          [Ss]rc-win/*/*.csproj
+          [Tt]est-win/*/*.csproj
+      test:
+        project: |
+          [Tt]est/*/*.csproj
+          [Tt]est-win/*/*.csproj
+      pack:
+        skip:       true
+      publish:
+        project: |
+          [Ss]rc/*/*.csproj
+          [Ss]rc-win/*/*.csproj

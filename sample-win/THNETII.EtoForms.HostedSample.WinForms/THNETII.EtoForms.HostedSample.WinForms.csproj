@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\THNETII.EtoForms.HostedSample\THNETII.EtoForms.HostedSample.csproj" />
+    <ProjectReference Include="..\..\sample\THNETII.EtoForms.HostedSample\THNETII.EtoForms.HostedSample.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\THNETII.EtoForms.HostedSample\Program.cs">
+    <Compile Include="..\..\sample\THNETII.EtoForms.HostedSample\Program.cs">
       <Link>Program.cs</Link>
     </Compile>
   </ItemGroup>
