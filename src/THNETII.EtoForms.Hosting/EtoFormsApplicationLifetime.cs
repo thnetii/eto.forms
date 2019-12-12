@@ -68,7 +68,7 @@ namespace THNETII.EtoForms.Hosting
             bool isStaThread = thread.TrySetApartmentState(ApartmentState.STA);
             if (!isStaThread)
             {
-                Logger.LogWarning("Unable to set Eto.Forms.Application thread apartment state to STA.");
+                Logger.LogInformation("Unable to set Eto.Forms.Application thread apartment state to STA.");
             }
             thread.Start(startup);
 
@@ -169,7 +169,8 @@ namespace THNETII.EtoForms.Hosting
         {
             startingRegistration.Dispose();
             stoppingRegistration.Dispose();
-            AbortThread(this);
+            if (thread.IsAlive)
+                AbortThread(this);
         }
     }
 }
