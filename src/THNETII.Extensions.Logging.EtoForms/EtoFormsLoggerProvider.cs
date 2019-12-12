@@ -121,30 +121,29 @@ namespace THNETII.Extensions.Logging.EtoForms
                     if (exception is Exception)
                         args = args.Concat(WrapExceptionInKvpArray(exception));
                     break;
-                default:
-                    var stateObj = (object)state;
-                    if (stateObj is null)
-                    {
-                        if (exception is Exception)
-                            args = WrapExceptionInKvpArray(exception);
-                    }
-                    else if (exception is null)
+                case object stateObj:
+                    if (exception is null)
                         args = new[] { WrapStateInKvp(stateObj) };
                     else
                         args = new[]
                         {
-                            WrapStateInKvp(stateObj),
-                            WrapExceptionInKvp(exception)
+                                WrapStateInKvp(stateObj),
+                                WrapExceptionInKvp(exception)
                         };
+                    break;
+                case null when exception is Exception:
+                    args = WrapExceptionInKvpArray(exception);
                     break;
             }
             Log(logLevel, eventId, message, args);
 
-            KeyValuePair<string, object>[] WrapExceptionInKvpArray(Exception e) =>
+            static KeyValuePair<string, object>[] WrapExceptionInKvpArray(Exception e) =>
                 new[] { WrapExceptionInKvp(e) };
-            KeyValuePair<string, object> WrapExceptionInKvp(Exception e) =>
+
+            static KeyValuePair<string, object> WrapExceptionInKvp(Exception e) =>
                 new KeyValuePair<string, object>(exceptionName, e);
-            KeyValuePair<string, object> WrapStateInKvp(object value) =>
+
+            static KeyValuePair<string, object> WrapStateInKvp(object value) =>
                 new KeyValuePair<string, object>(stateName, value);
         }
 
