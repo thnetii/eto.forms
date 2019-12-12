@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\THNETII.EtoForms.HostedSample\THNETII.EtoForms.HostedSample.csproj" />
+    <ProjectReference Include="..\THNETII.EtoForms.CrossPlatformSample\THNETII.EtoForms.CrossPlatformSample.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\THNETII.EtoForms.HostedSample\Program.cs">
+    <Compile Include="..\THNETII.EtoForms.CrossPlatformSample\Program.cs">
       <Link>Program.cs</Link>
     </Compile>
   </ItemGroup>
