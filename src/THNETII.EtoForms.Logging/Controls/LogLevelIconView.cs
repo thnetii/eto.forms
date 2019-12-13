@@ -1,4 +1,4 @@
-namespace THNETII.Extensions.Logging.EtoForms.Controls
+namespace THNETII.EtoForms.Logging.Controls
 {
     public class LogLevelIconView : Eto.Forms.ImageView
     {

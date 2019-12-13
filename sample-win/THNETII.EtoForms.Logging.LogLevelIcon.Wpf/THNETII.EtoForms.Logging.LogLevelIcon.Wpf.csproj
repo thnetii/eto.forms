@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\THNETII.Extensions.Logging.EtoForms\THNETII.Extensions.Logging.EtoForms.csproj" />
+    <ProjectReference Include="..\..\src\THNETII.EtoForms.Logging\THNETII.EtoForms.Logging.csproj" />
   </ItemGroup>
 
 </Project>

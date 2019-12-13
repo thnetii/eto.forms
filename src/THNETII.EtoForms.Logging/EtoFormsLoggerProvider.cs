@@ -7,22 +7,21 @@ using System.Text;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace THNETII.Extensions.Logging.EtoForms
+namespace THNETII.EtoForms.Logging
 {
     public class EtoFormsLoggerProvider : ILoggerProvider, ISupportExternalScope
     {
         private readonly ConcurrentDictionary<string, EtoFormsLogger> loggers =
             new ConcurrentDictionary<string, EtoFormsLogger>(StringComparer.OrdinalIgnoreCase);
-
         private readonly Lazy<LoggerExternalScopeProvider> fallbackScopeProvider =
             new Lazy<LoggerExternalScopeProvider>(() => new LoggerExternalScopeProvider());
         private readonly Func<string, LogLevel, bool> filter;
-        private IDisposable optionsReloadToken;
-        private IExternalScopeProvider scopeProvider;
+        private readonly IDisposable? optionsReloadToken;
+        private IExternalScopeProvider? scopeProvider;
         private bool includeScopes;
         private static readonly Func<string, LogLevel, bool> trueFilter = (cat, level) => true;
 
-        public IExternalScopeProvider ScopeProvider
+        public IExternalScopeProvider? ScopeProvider
         {
             get => includeScopes ? scopeProvider ?? fallbackScopeProvider.Value : null;
             set => SetScopeProvider(value);
@@ -31,8 +30,11 @@ namespace THNETII.Extensions.Logging.EtoForms
         public EtoFormsLoggerProvider(IOptionsMonitor<EtoFormsLoggerOptions> options) : base()
         {
             filter = trueFilter;
-            optionsReloadToken = options.OnChange(OnLoggerOptionsChange);
-            OnLoggerOptionsChange(options.CurrentValue);
+            if (!(options is null))
+            {
+                optionsReloadToken = options.OnChange(OnLoggerOptionsChange);
+                OnLoggerOptionsChange(options.CurrentValue);
+            }
         }
 
         public ILogger CreateLogger(string categoryName) =>
@@ -43,7 +45,7 @@ namespace THNETII.Extensions.Logging.EtoForms
             return new EtoFormsLogger(name);
         }
 
-        public void SetScopeProvider(IExternalScopeProvider scopeProvider) =>
+        public void SetScopeProvider(IExternalScopeProvider? scopeProvider) =>
             this.scopeProvider = scopeProvider;
 
         private void OnLoggerOptionsChange(EtoFormsLoggerOptions options)
@@ -52,7 +54,7 @@ namespace THNETII.Extensions.Logging.EtoForms
             var scopeProvider = ScopeProvider;
             foreach (var logger in loggers.Values)
             {
-                logger.ScopeProvider = scopeProvider;
+                logger.ScopeProvider = scopeProvider!;
             }
         }
 
@@ -70,7 +72,7 @@ namespace THNETII.Extensions.Logging.EtoForms
 
         protected virtual void Dispose(bool disposing)
         {
-            System.Threading.Interlocked.Exchange(ref optionsReloadToken, null)?.Dispose();
+            optionsReloadToken?.Dispose();
         }
         #endregion
     }
@@ -89,10 +91,10 @@ namespace THNETII.Extensions.Logging.EtoForms
             this.name = string.IsNullOrWhiteSpace(name) ? nameof(EtoFormsLogger) : name;
         }
 
-        public IExternalScopeProvider ScopeProvider { get; internal set; }
+        public IExternalScopeProvider? ScopeProvider { get; internal set; }
 
         public IDisposable BeginScope<TState>(TState state) =>
-            ScopeProvider?.Push(state);
+            ScopeProvider?.Push(state)!;
 
         public bool IsEnabled(LogLevel logLevel) => logLevel != LogLevel.None;
 
@@ -103,7 +105,7 @@ namespace THNETII.Extensions.Logging.EtoForms
 
             var message = formatter?.Invoke(state, exception);
 
-            IEnumerable<KeyValuePair<string, object>> args = null;
+            IEnumerable<KeyValuePair<string, object>>? args = null;
             switch (state)
             {
                 case IDictionary<string, object> dict:
@@ -135,7 +137,7 @@ namespace THNETII.Extensions.Logging.EtoForms
                     args = WrapExceptionInKvpArray(exception);
                     break;
             }
-            Log(logLevel, eventId, message, args);
+            Log(logLevel, eventId, message, args, exception);
 
             static KeyValuePair<string, object>[] WrapExceptionInKvpArray(Exception e) =>
                 new[] { WrapExceptionInKvp(e) };
@@ -147,48 +149,10 @@ namespace THNETII.Extensions.Logging.EtoForms
                 new KeyValuePair<string, object>(stateName, value);
         }
 
-        protected void Log(LogLevel logLevel, EventId eventId, string message, IEnumerable<KeyValuePair<string, object>> args)
+        protected void Log(LogLevel logLevel, EventId eventId, string? message,
+            IEnumerable<KeyValuePair<string, object>>? args, Exception? exception)
         {
             throw new NotImplementedException();
-        }
-    }
-
-    public class EtoFormsLogItemControl : Eto.Forms.GroupBox
-    {
-        public EtoFormsLogItemControl(DateTime timestamp, LogLevel logLevel,
-            string category, EventId eventId, string message)
-            : base()
-        {
-            var invariant = System.Globalization.CultureInfo.InvariantCulture;
-            var timestampText = timestamp.ToString(invariant);
-            var logLevelText = logLevel.ToString();
-            var eventIdValueText = eventId.Id.ToString(invariant);
-            var eventIdText = string.IsNullOrWhiteSpace(eventId.Name)
-                ? eventIdValueText
-                : $"{eventIdValueText}: {eventId.Name}";
-            var headingText = $"{category}[{eventIdText}]";
-
-            var headingTableLayout = new Eto.Forms.TableLayout();
-            
-
-            var logLevelLabel = new Eto.Forms.Label { Text = logLevelText };
-            var messageLabel = new Eto.Forms.Label
-            {
-                Text = message,
-                Wrap = Eto.Forms.WrapMode.Word
-            };
-
-            var contentStackLayout = new Eto.Forms.StackLayout(
-                new Eto.Forms.StackLayoutItem(logLevelLabel),
-                new Eto.Forms.StackLayoutItem(messageLabel)
-                )
-            {
-                HorizontalContentAlignment = Eto.Forms.HorizontalAlignment.Left,
-                Orientation = Eto.Forms.Orientation.Vertical
-            };
-
-            Text = timestampText;
-            Content = contentStackLayout;
         }
     }
 }
