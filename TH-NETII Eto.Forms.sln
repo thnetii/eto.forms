@@ -47,6 +47,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "THNETII.EtoForms.CmdParserH
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "THNETII.EtoForms.CmdParserHostedSample.Wpf", "sample-win\THNETII.EtoForms.CmdParserHostedSample.Wpf\THNETII.EtoForms.CmdParserHostedSample.Wpf.csproj", "{7563405A-4F0D-4DE6-BEA4-FF4D0F2E5274}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "THNETII.EtoForms.CommandLine", "src\THNETII.EtoForms.CommandLine\THNETII.EtoForms.CommandLine.csproj", "{01CAB15E-904B-4ACB-8D78-C4F8F727DE77}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -201,6 +203,18 @@ Global
 		{7563405A-4F0D-4DE6-BEA4-FF4D0F2E5274}.Release|x64.Build.0 = Release|Any CPU
 		{7563405A-4F0D-4DE6-BEA4-FF4D0F2E5274}.Release|x86.ActiveCfg = Release|Any CPU
 		{7563405A-4F0D-4DE6-BEA4-FF4D0F2E5274}.Release|x86.Build.0 = Release|Any CPU
+		{01CAB15E-904B-4ACB-8D78-C4F8F727DE77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01CAB15E-904B-4ACB-8D78-C4F8F727DE77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01CAB15E-904B-4ACB-8D78-C4F8F727DE77}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{01CAB15E-904B-4ACB-8D78-C4F8F727DE77}.Debug|x64.Build.0 = Debug|Any CPU
+		{01CAB15E-904B-4ACB-8D78-C4F8F727DE77}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{01CAB15E-904B-4ACB-8D78-C4F8F727DE77}.Debug|x86.Build.0 = Debug|Any CPU
+		{01CAB15E-904B-4ACB-8D78-C4F8F727DE77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01CAB15E-904B-4ACB-8D78-C4F8F727DE77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01CAB15E-904B-4ACB-8D78-C4F8F727DE77}.Release|x64.ActiveCfg = Release|Any CPU
+		{01CAB15E-904B-4ACB-8D78-C4F8F727DE77}.Release|x64.Build.0 = Release|Any CPU
+		{01CAB15E-904B-4ACB-8D78-C4F8F727DE77}.Release|x86.ActiveCfg = Release|Any CPU
+		{01CAB15E-904B-4ACB-8D78-C4F8F727DE77}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -218,6 +232,7 @@ Global
 		{EF979216-9978-4685-92DD-3403DABEC3B3} = {E6DFFFDA-5B10-46C7-A95A-DF0BF0C6E62C}
 		{F232AC1E-CD76-4971-9B38-0E682D6E752E} = {C991FA74-33CC-4AE8-9A9B-267D8B25A2BE}
 		{7563405A-4F0D-4DE6-BEA4-FF4D0F2E5274} = {C991FA74-33CC-4AE8-9A9B-267D8B25A2BE}
+		{01CAB15E-904B-4ACB-8D78-C4F8F727DE77} = {5D20A5ED-BC45-43E7-B8F7-C97C21F40E87}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BEB3C79A-E97E-4AC1-B72E-4F1F1561B47C}

@@ -128,6 +128,20 @@
         "reveal": "always"
       },
       "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "THNETII.EtoForms.CommandLine",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "src/THNETII.EtoForms.CommandLine"
+      ],
+      "type": "shell",
+      "group": "build",
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": "$msCompile"
     }
   ]
 }
