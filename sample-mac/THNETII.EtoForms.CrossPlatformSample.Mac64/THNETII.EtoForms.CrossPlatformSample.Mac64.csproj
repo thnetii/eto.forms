@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RuntimeIdentifier>osx.10.10-x64</RuntimeIdentifier>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\sample\THNETII.EtoForms.CrossPlatformSample\THNETII.EtoForms.CrossPlatformSample.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Eto.Platform.Mac64" Version="2.5.0-rc.5" />
+    <PackageReference Include="GtkSharp" Version="3.22.25.56" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\sample\THNETII.EtoForms.CrossPlatformSample\Program.cs">
+      <Link>Program.cs</Link>
+    </Compile>
+  </ItemGroup>
+
+</Project>
