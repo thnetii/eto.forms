@@ -146,6 +146,54 @@
         "reveal": "always"
       },
       "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "THNETII.EtoForms.CrossPlatformSample",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "sample-win/THNETII.EtoForms.CrossPlatformSample",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "type": "shell",
+      "group": "build",
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "THNETII.EtoForms.CrossPlatformSample.Gtk",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "sample/THNETII.EtoForms.CrossPlatformSample.Gtk",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "type": "shell",
+      "group": "build",
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "THNETII.EtoForms.CrossPlatformSample.WinForms",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "sample-win/THNETII.EtoForms.CrossPlatformSample.WinForms",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "type": "shell",
+      "group": "build",
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": "$msCompile"
     }
   ]
 }
