@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-
+using Microsoft.Extensions.Options;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -25,22 +25,56 @@ namespace Microsoft.Extensions.Hosting
         /// <typeparam name="TForm">The type of the main form class.</typeparam>
         /// <param name="hostBuilder">The <see cref="IHostBuilder"/> to configure.</param>
         /// <param name="cancelToken">An optional <see cref="CancellationToken"/> that can be used to close the application.</param>
-        /// <returns>A Task that is completed when the main form is closed or <paramref name="cancelToken"/> is triggered.</returns>
-        public static async Task RunEtoFormAsync<TForm>(this IHostBuilder hostBuilder,
+        public static void RunEtoForm<TForm>(this IHostBuilder hostBuilder,
             CancellationToken cancelToken = default)
             where TForm : Eto.Forms.Form
         {
             if (hostBuilder is null)
                 throw new ArgumentNullException(nameof(hostBuilder));
 
-            using var host = hostBuilder.ConfigureServices((_, services) =>
+            var platform = Eto.Platform.Detect;
+            using var application = new Eto.Forms.Application(platform);
+
+            using var host = hostBuilder
+                .ConfigureServices((_, services) =>
                 {
-                    services.AddEtoFormsHost();
+                    services.AddEtoFormsHost(application);
+                    services.TryAddSingleton<TForm>();
                     services.Configure<EtoFormsOptions>(opts => opts.MainForm = typeof(TForm));
                 })
                 .Build();
 
-            await host.RunAsync(cancelToken).ConfigureAwait(false);
+            host.Start();
+
+            var options = host.Services
+                .GetRequiredService<IOptions<EtoFormsOptions>>().Value;
+            object form = null;
+            if (options.MainForm is Type formType)
+                form = ActivatorUtilities.GetServiceOrCreateInstance(
+                    host.Services, formType);
+
+            using var cancelReg = cancelToken.Register(obj =>
+            {
+                var app = (Eto.Forms.Application)obj;
+                app.Quit();
+            }, application);
+
+            switch (form)
+            {
+                case Eto.Forms.Form mainForm:
+                    application.Run(mainForm);
+                    break;
+                case Eto.Forms.Dialog dialog:
+                    application.Run(dialog);
+                    break;
+                case null:
+                    application.Run();
+                    break;
+            }
+
+            var hostLifetime = host.Services.GetRequiredService<IHostApplicationLifetime>();
+            hostLifetime.StopApplication();
+            host.WaitForShutdown();
         }
     }
 }
