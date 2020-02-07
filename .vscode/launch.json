@@ -5,6 +5,45 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "THNETII.EtoForms.CmdParserHostedSample.Gtk",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "THNETII.EtoForms.CmdParserHostedSample.Gtk",
+      // If you have changed target frameworks, make sure to update the program path.
+      "program": "${workspaceFolder}/bin/Debug/netcoreapp3.1/THNETII.EtoForms.CmdParserHostedSample.Gtk.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/sample/THNETII.EtoForms.CmdParserHostedSample",
+      // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+      "console": "internalConsole",
+      "stopAtEntry": false
+    },
+    {
+      "name": "THNETII.EtoForms.CmdParserHostedSample.WinForms",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "THNETII.EtoForms.CmdParserHostedSample.WinForms",
+      // If you have changed target frameworks, make sure to update the program path.
+      "program": "${workspaceFolder}/bin/Debug/netcoreapp3.1/THNETII.EtoForms.CmdParserHostedSample.WinForms.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/sample/THNETII.EtoForms.CmdParserHostedSample",
+      // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+      "console": "internalConsole",
+      "stopAtEntry": false
+    },
+    {
+      "name": "THNETII.EtoForms.CmdParserHostedSample.Wpf",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "THNETII.EtoForms.CmdParserHostedSample.Wpf",
+      // If you have changed target frameworks, make sure to update the program path.
+      "program": "${workspaceFolder}/bin/Debug/netcoreapp3.1/THNETII.EtoForms.CmdParserHostedSample.Wpf.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/sample/THNETII.EtoForms.CmdParserHostedSample",
+      // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+      "console": "internalConsole",
+      "stopAtEntry": false
+    },
+    {
       "name": "THNETII.EtoForms.HostedSample.Gtk",
       "type": "coreclr",
       "request": "launch",

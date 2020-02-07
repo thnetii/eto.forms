@@ -4,6 +4,62 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "THNETII.EtoForms.CmdParserHostedSample",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "sample/THNETII.EtoForms.CmdParserHostedSample"
+      ],
+      "type": "shell",
+      "group": "build",
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "THNETII.EtoForms.CmdParserHostedSample.Gtk",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "sample/THNETII.EtoForms.CmdParserHostedSample.Gtk"
+      ],
+      "type": "shell",
+      "group": "build",
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "THNETII.EtoForms.CmdParserHostedSample.WinForms",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "sample-win/THNETII.EtoForms.CmdParserHostedSample.WinForms"
+      ],
+      "type": "shell",
+      "group": "build",
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "THNETII.EtoForms.CmdParserHostedSample.Wpf",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "sample-win/THNETII.EtoForms.CmdParserHostedSample.Wpf"
+      ],
+      "type": "shell",
+      "group": "build",
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
       "label": "THNETII.EtoForms.Hosting",
       "command": "dotnet",
       "args": [
