@@ -10,7 +10,6 @@ using System.CommandLine.Invocation;
 using System.CommandLine.Parsing;
 
 using THNETII.EtoForms.Hosting;
-using THNETII.EtoForms.CommandLine;
 
 namespace THNETII.EtoForms.CmdParserHostedSample
 {

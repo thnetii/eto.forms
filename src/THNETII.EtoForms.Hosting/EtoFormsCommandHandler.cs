@@ -7,9 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 
-using THNETII.EtoForms.Hosting;
-
-namespace THNETII.EtoForms.CommandLine
+namespace THNETII.EtoForms.Hosting
 {
     public static class EtoFormsCommandHandler
     {

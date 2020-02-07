@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\THNETII.EtoForms.Hosting\THNETII.EtoForms.Hosting.csproj" />
-    <ProjectReference Include="..\..\src\THNETII.EtoForms.CommandLine\THNETII.EtoForms.CommandLine.csproj" />
   </ItemGroup>
 
   <ItemGroup>
