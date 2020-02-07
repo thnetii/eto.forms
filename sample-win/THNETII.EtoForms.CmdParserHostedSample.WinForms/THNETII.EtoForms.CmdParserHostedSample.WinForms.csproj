@@ -4,12 +4,12 @@
   <PropertyGroup>
     <LangVersion>8</LangVersion>
     <OutputType>WinExe</OutputType>
-    <TargetFrameworks>netcoreapp3.0;net47</TargetFrameworks>
+    <TargetFrameworks>netcoreapp3.1;net47</TargetFrameworks>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\sample\THNETII.EtoForms.CrossPlatformSample\THNETII.EtoForms.CrossPlatformSample.csproj" />
+    <ProjectReference Include="..\..\sample\THNETII.EtoForms.CmdParserHostedSample\THNETII.EtoForms.CmdParserHostedSample.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\..\sample\THNETII.EtoForms.CrossPlatformSample\Program.cs">
+    <Compile Include="..\..\sample\THNETII.EtoForms.CmdParserHostedSample\Program.cs">
       <Link>Program.cs</Link>
     </Compile>
   </ItemGroup>

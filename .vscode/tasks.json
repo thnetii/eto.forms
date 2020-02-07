@@ -4,11 +4,77 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "THNETII.EtoForms.CmdParserHostedSample",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "sample/THNETII.EtoForms.CmdParserHostedSample",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "type": "shell",
+      "group": "build",
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "THNETII.EtoForms.CmdParserHostedSample.Gtk",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "sample/THNETII.EtoForms.CmdParserHostedSample.Gtk",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "type": "shell",
+      "group": "build",
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "THNETII.EtoForms.CmdParserHostedSample.WinForms",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "sample-win/THNETII.EtoForms.CmdParserHostedSample.WinForms",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "type": "shell",
+      "group": "build",
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "THNETII.EtoForms.CmdParserHostedSample.Wpf",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "sample-win/THNETII.EtoForms.CmdParserHostedSample.Wpf",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "type": "shell",
+      "group": "build",
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
       "label": "THNETII.EtoForms.Hosting",
       "command": "dotnet",
       "args": [
         "build",
-        "src/THNETII.EtoForms.Hosting"
+        "src/THNETII.EtoForms.Hosting",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
       ],
       "type": "shell",
       "group": "build",
@@ -22,7 +88,9 @@
       "command": "dotnet",
       "args": [
         "build",
-        "sample/THNETII.EtoForms.HostedSample"
+        "sample/THNETII.EtoForms.HostedSample",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
       ],
       "type": "shell",
       "group": "build",
@@ -36,7 +104,9 @@
       "command": "dotnet",
       "args": [
         "build",
-        "sample/THNETII.EtoForms.HostedSample.Gtk"
+        "sample/THNETII.EtoForms.HostedSample.Gtk",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
       ],
       "type": "shell",
       "group": "build",
@@ -50,7 +120,9 @@
       "command": "dotnet",
       "args": [
         "build",
-        "sample-win/THNETII.EtoForms.HostedSample.WinForms"
+        "sample-win/THNETII.EtoForms.HostedSample.WinForms",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
       ],
       "type": "shell",
       "group": "build",
@@ -64,7 +136,57 @@
       "command": "dotnet",
       "args": [
         "build",
-        "sample-win/THNETII.EtoForms.HostedSample.Wpf"
+        "sample-win/THNETII.EtoForms.HostedSample.Wpf",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "type": "shell",
+      "group": "build",
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "THNETII.EtoForms.CrossPlatformSample",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "sample-win/THNETII.EtoForms.CrossPlatformSample",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "type": "shell",
+      "group": "build",
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "THNETII.EtoForms.CrossPlatformSample.Gtk",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "sample/THNETII.EtoForms.CrossPlatformSample.Gtk",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "type": "shell",
+      "group": "build",
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "THNETII.EtoForms.CrossPlatformSample.WinForms",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "sample-win/THNETII.EtoForms.CrossPlatformSample.WinForms",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
       ],
       "type": "shell",
       "group": "build",

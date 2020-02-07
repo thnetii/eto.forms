@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
     <LangVersion>8</LangVersion>
     <OutputType>WinExe</OutputType>
-    <TargetFrameworks>netcoreapp3.0;net47</TargetFrameworks>
+    <TargetFrameworks>netcoreapp3.1;net47</TargetFrameworks>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\sample\THNETII.EtoForms.HostedSample\THNETII.EtoForms.HostedSample.csproj" />
+    <ProjectReference Include="..\..\sample\THNETII.EtoForms.CmdParserHostedSample\THNETII.EtoForms.CmdParserHostedSample.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\..\sample\THNETII.EtoForms.HostedSample\Program.cs">
+    <Compile Include="..\..\sample\THNETII.EtoForms.CmdParserHostedSample\Program.cs">
       <Link>Program.cs</Link>
     </Compile>
   </ItemGroup>

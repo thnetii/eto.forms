@@ -1,21 +1,19 @@
-﻿using Eto.Forms;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using System;
+﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
+
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace THNETII.EtoForms.Hosting
 {
     [SuppressMessage("Globalization", "CA1303:Do not pass literals as localized parameters", Justification = "Logging")]
     public sealed class EtoFormsApplicationLifetime : IHostLifetime, IDisposable
     {
-        private readonly IServiceProvider serviceProvider;
         private readonly EtoFormsOptions options;
-        private readonly Application application;
+        private readonly Eto.Forms.Application application;
 
         private CancellationTokenRegistration startingRegistration;
         private CancellationTokenRegistration stoppingRegistration;
@@ -25,7 +23,6 @@ namespace THNETII.EtoForms.Hosting
         private ILogger Logger { get; }
 
         public EtoFormsApplicationLifetime(
-            IServiceProvider serviceProvider,
             IOptions<EtoFormsOptions> options,
             Eto.Forms.Application application,
             IHostApplicationLifetime hostapplifetime,
@@ -33,7 +30,6 @@ namespace THNETII.EtoForms.Hosting
             ILoggerFactory loggerFactory
             ) : base()
         {
-            this.serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
             this.options = options?.Value ?? throw new ArgumentNullException(nameof(options));
             this.application = application ?? throw new ArgumentNullException(nameof(application));
 
@@ -78,7 +74,9 @@ namespace THNETII.EtoForms.Hosting
 
         public Task StopAsync(CancellationToken cancelToken)
         {
-            application.Quit();
+            if (!ApplicationLifetime.ApplicationStopping.IsCancellationRequested &&
+                !ApplicationLifetime.ApplicationStopped.IsCancellationRequested)
+                application.Quit();
             return Task.CompletedTask;
         }
 
