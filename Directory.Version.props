@@ -2,7 +2,7 @@
 <Project>
   <PropertyGroup Condition="'$(VersionPrefix)'==''">
     <VersionPrefix>0.0.1</VersionPrefix>
-    <!--<VersionSuffix>preview1</VersionSuffix>-->
+    <VersionSuffix>preview1</VersionSuffix>
   </PropertyGroup>
   <Import Condition="
     '$(MSBuildThisFile)'=='Directory.Build.props'
