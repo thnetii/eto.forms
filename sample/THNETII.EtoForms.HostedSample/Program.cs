@@ -1,22 +1,22 @@
 ﻿using Microsoft.Extensions.Hosting;
 
-using System.Threading.Tasks;
+using System;
 
 namespace THNETII.EtoForms.HostedSample
 {
     public static class Program
     {
+        [STAThread]
 #if NETCOREAPP
-        public static Task Main(string[] args)
+        public static void Main(string[] args)
         {
-            return Host.CreateDefaultBuilder(args)
-                .RunEtoFormAsync<MainForm>();
+            Host.CreateDefaultBuilder(args)
+                .RunEtoForm<MainForm>();
         }
 #else
-        public static Task Main()
+        public static void Main()
         {
-            return new HostBuilder()
-                .RunEtoFormAsync<MainForm>();
+            new HostBuilder().RunEtoForm<MainForm>();
         }
 #endif
     }
