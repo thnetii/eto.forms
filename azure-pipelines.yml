@@ -55,4 +55,16 @@ jobs:
         testProjects: |
           [Tt]est/*/*.csproj
           [Tt]est-gtk/*/*.csproj
-    macRuntime: ${{ variables.null }}
+    macRuntime:
+      argValue:     osx.10.10-x64
+      common:
+        allProjects: |
+          [Ss]ample/*/*.csproj
+          [Ss]rc/*/*.csproj
+          [Tt]est/*/*.csproj
+          [Ss]ample-mac/*/*.csproj
+          [Ss]rc-mac/*/*.csproj
+          [Tt]est-mac/*/*.csproj
+        testProjects: |
+          [Tt]est/*/*.csproj
+          [Tt]est-mac/*/*.csproj
