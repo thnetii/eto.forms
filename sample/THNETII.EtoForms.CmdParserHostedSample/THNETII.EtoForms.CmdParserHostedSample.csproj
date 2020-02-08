@@ -1,7 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>8</LangVersion>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks Condition="'$(NoNetFramework)'!='true'">$(TargetFrameworks);net47</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,10 +15,6 @@
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.1" />
     <PackageReference Include="System.CommandLine" Version="2.0.0-beta1.20071.2" />
     <PackageReference Include="System.CommandLine.Hosting" Version="0.3.0-alpha.20070.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="Program.cs" />
   </ItemGroup>
 
 </Project>

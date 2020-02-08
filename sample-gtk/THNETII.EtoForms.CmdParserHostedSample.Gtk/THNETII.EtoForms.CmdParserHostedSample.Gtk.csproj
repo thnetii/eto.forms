@@ -13,11 +13,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\THNETII.EtoForms.CmdParserHostedSample\THNETII.EtoForms.CmdParserHostedSample.csproj" />
+    <ProjectReference Include="..\..\sample\THNETII.EtoForms.CmdParserHostedSample\THNETII.EtoForms.CmdParserHostedSample.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\THNETII.EtoForms.CmdParserHostedSample\Program.cs">
+    <Compile Include="..\..\sample\THNETII.EtoForms.CmdParserHostedSample\Program.cs">
       <Link>Program.cs</Link>
     </Compile>
   </ItemGroup>

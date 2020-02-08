@@ -27,6 +27,7 @@ jobs:
       srcProjects: |
         [Ss]rc/*/*.csproj
     disableWindowsRuntime: true
+    disableLinuxRuntime:   true
     addRuntimes:
     - id:           win
       condition:    ne(variables['SkipWindowsRuntime'], 'true')
@@ -60,3 +61,35 @@ jobs:
         project: |
           [Ss]rc/*/*.csproj
           [Ss]rc-win/*/*.csproj
+    - id:           linux
+      condition:    ne(variables['SkipLinuxRuntime'], 'true')
+      argValue:     linux-x64
+      displayName:  Linux, 64-bit
+      pool:
+        vmImage:    ubuntu-latest
+      restore:
+        projects: |
+          [Ss]ample/*/*.csproj
+          [Ss]rc/*/*.csproj
+          [Tt]est/*/*.csproj
+          [Ss]ample-gtk/*/*.csproj
+          [Ss]rc-gtk/*/*.csproj
+          [Tt]est-gtk/*/*.csproj
+      build:
+        projects: |
+          [Ss]ample/*/*.csproj
+          [Ss]rc/*/*.csproj
+          [Tt]est/*/*.csproj
+          [Ss]ample-gtk/*/*.csproj
+          [Ss]rc-gtk/*/*.csproj
+          [Tt]est-gtk/*/*.csproj
+      test:
+        project: |
+          [Tt]est/*/*.csproj
+          [Tt]est-gtk/*/*.csproj
+      pack:
+        skip:       true
+      publish:
+        project: |
+          [Ss]rc/*/*.csproj
+          [Ss]rc-gtk/*/*.csproj

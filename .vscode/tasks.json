@@ -24,7 +24,7 @@
       "command": "dotnet",
       "args": [
         "build",
-        "sample/THNETII.EtoForms.CmdParserHostedSample.Gtk",
+        "sample-gtk/THNETII.EtoForms.CmdParserHostedSample.Gtk",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary"
       ],
@@ -104,7 +104,7 @@
       "command": "dotnet",
       "args": [
         "build",
-        "sample/THNETII.EtoForms.HostedSample.Gtk",
+        "sample-gtk/THNETII.EtoForms.HostedSample.Gtk",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary"
       ],
@@ -168,7 +168,7 @@
       "command": "dotnet",
       "args": [
         "build",
-        "sample/THNETII.EtoForms.CrossPlatformSample.Gtk",
+        "sample-gtk/THNETII.EtoForms.CrossPlatformSample.Gtk",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary"
       ],
