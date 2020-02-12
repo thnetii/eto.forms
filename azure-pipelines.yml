@@ -43,6 +43,7 @@ jobs:
         testProjects: |
           [Tt]est/*/*.csproj
           [Tt]est-win/*/*.csproj
+      arguments:    '-p:NoNetFramework=true'
     linuxRuntime:
       common:
         allProjects: |
