@@ -15,7 +15,12 @@
       "type": "shell",
       "group": "build",
       "presentation": {
-        "reveal": "always"
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": true
       },
       "problemMatcher": "$msCompile"
     },
@@ -31,7 +36,12 @@
       "type": "shell",
       "group": "build",
       "presentation": {
-        "reveal": "always"
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": true
       },
       "problemMatcher": "$msCompile"
     },
@@ -47,7 +57,12 @@
       "type": "shell",
       "group": "build",
       "presentation": {
-        "reveal": "always"
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": true
       },
       "problemMatcher": "$msCompile"
     },
@@ -63,7 +78,12 @@
       "type": "shell",
       "group": "build",
       "presentation": {
-        "reveal": "always"
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": true
       },
       "problemMatcher": "$msCompile"
     },
@@ -79,7 +99,12 @@
       "type": "shell",
       "group": "build",
       "presentation": {
-        "reveal": "always"
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": true
       },
       "problemMatcher": "$msCompile"
     },
@@ -95,7 +120,12 @@
       "type": "shell",
       "group": "build",
       "presentation": {
-        "reveal": "always"
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": true
       },
       "problemMatcher": "$msCompile"
     },
@@ -111,7 +141,12 @@
       "type": "shell",
       "group": "build",
       "presentation": {
-        "reveal": "always"
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": true
       },
       "problemMatcher": "$msCompile"
     },
@@ -127,7 +162,12 @@
       "type": "shell",
       "group": "build",
       "presentation": {
-        "reveal": "always"
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": true
       },
       "problemMatcher": "$msCompile"
     },
@@ -143,7 +183,12 @@
       "type": "shell",
       "group": "build",
       "presentation": {
-        "reveal": "always"
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": true
       },
       "problemMatcher": "$msCompile"
     },
@@ -159,7 +204,12 @@
       "type": "shell",
       "group": "build",
       "presentation": {
-        "reveal": "always"
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": true
       },
       "problemMatcher": "$msCompile"
     },
@@ -175,7 +225,12 @@
       "type": "shell",
       "group": "build",
       "presentation": {
-        "reveal": "always"
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": true
       },
       "problemMatcher": "$msCompile"
     },
@@ -191,7 +246,12 @@
       "type": "shell",
       "group": "build",
       "presentation": {
-        "reveal": "always"
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": true
       },
       "problemMatcher": "$msCompile"
     }
