@@ -4,11 +4,12 @@
   // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
   "version": "0.2.0",
   "configurations": [
+    // THNETII.EtoForms.CmdParserHostedSample
     {
       "name": "THNETII.EtoForms.CmdParserHostedSample.Gtk",
       "type": "coreclr",
       "request": "launch",
-      "preLaunchTask": "THNETII.EtoForms.CmdParserHostedSample.Gtk",
+      "preLaunchTask": "build (sample-gtk)",
       // If you have changed target frameworks, make sure to update the program path.
       "program": "${workspaceFolder}/bin/Debug/netcoreapp3.1/THNETII.EtoForms.CmdParserHostedSample.Gtk.dll",
       "args": [],
@@ -21,7 +22,7 @@
       "name": "THNETII.EtoForms.CmdParserHostedSample.WinForms",
       "type": "coreclr",
       "request": "launch",
-      "preLaunchTask": "THNETII.EtoForms.CmdParserHostedSample.WinForms",
+      "preLaunchTask": "build (sample-win)",
       // If you have changed target frameworks, make sure to update the program path.
       "program": "${workspaceFolder}/bin/Debug/netcoreapp3.1/THNETII.EtoForms.CmdParserHostedSample.WinForms.dll",
       "args": [],
@@ -34,7 +35,7 @@
       "name": "THNETII.EtoForms.CmdParserHostedSample.Wpf",
       "type": "coreclr",
       "request": "launch",
-      "preLaunchTask": "THNETII.EtoForms.CmdParserHostedSample.Wpf",
+      "preLaunchTask": "build (sample-win)",
       // If you have changed target frameworks, make sure to update the program path.
       "program": "${workspaceFolder}/bin/Debug/netcoreapp3.1/THNETII.EtoForms.CmdParserHostedSample.Wpf.dll",
       "args": [],
@@ -43,13 +44,14 @@
       "console": "internalConsole",
       "stopAtEntry": false
     },
+    // THNETII.EtoForms.HostedSample
     {
       "name": "THNETII.EtoForms.HostedSample.Gtk",
       "type": "coreclr",
       "request": "launch",
-      "preLaunchTask": "THNETII.EtoForms.HostedSample.Gtk",
+      "preLaunchTask": "build (sample-gtk)",
       // If you have changed target frameworks, make sure to update the program path.
-      "program": "${workspaceFolder}/bin/Debug/netcoreapp3.0/THNETII.EtoForms.HostedSample.Gtk.dll",
+      "program": "${workspaceFolder}/bin/Debug/netcoreapp3.1/THNETII.EtoForms.HostedSample.Gtk.dll",
       "args": [],
       "cwd": "${workspaceFolder}/sample/THNETII.EtoForms.HostedSample",
       // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
@@ -60,9 +62,9 @@
       "name": "THNETII.EtoForms.HostedSample.WinForms",
       "type": "coreclr",
       "request": "launch",
-      "preLaunchTask": "THNETII.EtoForms.HostedSample.WinForms",
+      "preLaunchTask": "build (sample-win)",
       // If you have changed target frameworks, make sure to update the program path.
-      "program": "${workspaceFolder}/bin/Debug/netcoreapp3.0/THNETII.EtoForms.HostedSample.WinForms.dll",
+      "program": "${workspaceFolder}/bin/Debug/netcoreapp3.1/THNETII.EtoForms.HostedSample.WinForms.dll",
       "args": [],
       "cwd": "${workspaceFolder}/sample/THNETII.EtoForms.HostedSample",
       // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
@@ -73,11 +75,65 @@
       "name": "THNETII.EtoForms.HostedSample.Wpf",
       "type": "coreclr",
       "request": "launch",
-      "preLaunchTask": "THNETII.EtoForms.HostedSample.Wpf",
+      "preLaunchTask": "build (sample-win)",
       // If you have changed target frameworks, make sure to update the program path.
-      "program": "${workspaceFolder}/bin/Debug/netcoreapp3.0/THNETII.EtoForms.HostedSample.Wpf.dll",
+      "program": "${workspaceFolder}/bin/Debug/netcoreapp3.1/THNETII.EtoForms.HostedSample.Wpf.dll",
       "args": [],
       "cwd": "${workspaceFolder}/sample/THNETII.EtoForms.HostedSample",
+      // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+      "console": "internalConsole",
+      "stopAtEntry": false
+    },
+    // THNETII.EtoForms.CrossPlatformSample
+    {
+      "name": "THNETII.EtoForms.CrossPlatformSample.Gtk",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build (sample-gtk)",
+      // If you have changed target frameworks, make sure to update the program path.
+      "program": "${workspaceFolder}/bin/Debug/netcoreapp3.1/THNETII.EtoForms.CrossPlatformSample.Gtk.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/sample/THNETII.EtoForms.CrossPlatformSample",
+      // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+      "console": "internalConsole",
+      "stopAtEntry": false
+    },
+    {
+      "name": "THNETII.EtoForms.CrossPlatformSample.WinForms",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build (sample-win)",
+      // If you have changed target frameworks, make sure to update the program path.
+      "program": "${workspaceFolder}/bin/Debug/netcoreapp3.1/THNETII.EtoForms.CrossPlatformSample.WinForms.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/sample/THNETII.EtoForms.CrossPlatformSample",
+      // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+      "console": "internalConsole",
+      "stopAtEntry": false
+    },
+    // THNETII.EtoForms.ControlsSample
+    {
+      "name": "THNETII.EtoForms.ControlsSample.Gtk",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build (sample-gtk)",
+      // If you have changed target frameworks, make sure to update the program path.
+      "program": "${workspaceFolder}/bin/Debug/netcoreapp3.1/THNETII.EtoForms.ControlsSample.Gtk.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/sample/THNETII.EtoForms.ControlsSample",
+      // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+      "console": "internalConsole",
+      "stopAtEntry": false
+    },
+    {
+      "name": "THNETII.EtoForms.ControlsSample.WinForms",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build (sample-win)",
+      // If you have changed target frameworks, make sure to update the program path.
+      "program": "${workspaceFolder}/bin/Debug/netcoreapp3.1/THNETII.EtoForms.ControlsSample.WinForms.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/sample/THNETII.EtoForms.ControlsSample",
       // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
       "console": "internalConsole",
       "stopAtEntry": false
