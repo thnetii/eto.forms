@@ -2,7 +2,6 @@
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <LangVersion>8</LangVersion>
     <OutputType>WinExe</OutputType>
     <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
     <TargetFrameworks Condition="'$(NoNetFramework)'!='true'">$(TargetFrameworks);net47</TargetFrameworks>
@@ -14,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Eto.Platform.Wpf" Version="2.5.0" />
+    <PackageReference Include="Eto.Platform.Wpf" Version="2.5.2" />
   </ItemGroup>
 
   <ItemGroup>
