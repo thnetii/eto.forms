@@ -235,6 +235,22 @@
       "problemMatcher": "$msCompile"
     },
     {
+      "label": "THNETII.EtoForms.CrossPlatformSample.Mac64",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "sample-mac/THNETII.EtoForms.CrossPlatformSample.Mac64",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "type": "shell",
+      "group": "build",
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
       "label": "THNETII.EtoForms.CrossPlatformSample.WinForms",
       "command": "dotnet",
       "args": [
