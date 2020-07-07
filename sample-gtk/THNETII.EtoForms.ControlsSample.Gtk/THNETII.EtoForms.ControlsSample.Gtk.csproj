@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <LangVersion>8</LangVersion>
+    <Nullable>enable</Nullable>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\sample\THNETII.EtoForms.ControlsSample\THNETII.EtoForms.ControlsSample.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Eto.Platform.Gtk" Version="2.5.0" />
+    <PackageReference Include="GtkSharp" Version="3.22.25.56" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\sample\THNETII.EtoForms.ControlsSample\Program.cs">
+      <Link>Program.cs</Link>
+    </Compile>
+  </ItemGroup>
+
+</Project>
