@@ -12,51 +12,43 @@ resources:
   - repository: templates
     type:       github
     name:       thnetii/azure-pipelines
-    endpoint:   thnetii
+    endpoint:   github
 jobs:
 - template: templates/dotnetcore/azure-pipelines.yml@templates
   parameters:
-    presteps:
+    checkout:
     - checkout:   self
       submodules: true
-    overrideCommon:
+    common:
       allProjects: |
         [Ss]ample/*/*.csproj
         [Ss]rc/*/*.csproj
         [Tt]est/*/*.csproj
       srcProjects: |
         [Ss]rc/*/*.csproj
-    disableWindowsRuntime: true
-    addRuntimes:
-    - id:           win
-      condition:    ne(variables['SkipWindowsRuntime'], 'true')
-      argValue:     win10-x64
-      displayName:  Windows, 64-bit
-      pool:
-        vmImage:    windows-latest
-      restore:
-        projects: |
+    windowsRuntime:
+      common:
+        allProjects: |
           [Ss]ample/*/*.csproj
           [Ss]rc/*/*.csproj
           [Tt]est/*/*.csproj
           [Ss]ample-win/*/*.csproj
           [Ss]rc-win/*/*.csproj
           [Tt]est-win/*/*.csproj
-      build:
-        projects: |
+        testProjects: |
+          [Tt]est/*/*.csproj
+          [Tt]est-win/*/*.csproj
+      arguments:    '-p:NoNetFramework=true'
+    linuxRuntime:
+      common:
+        allProjects: |
           [Ss]ample/*/*.csproj
           [Ss]rc/*/*.csproj
           [Tt]est/*/*.csproj
-          [Ss]ample-win/*/*.csproj
-          [Ss]rc-win/*/*.csproj
-          [Tt]est-win/*/*.csproj
-      test:
-        project: |
+          [Ss]ample-gtk/*/*.csproj
+          [Ss]rc-gtk/*/*.csproj
+          [Tt]est-gtk/*/*.csproj
+        testProjects: |
           [Tt]est/*/*.csproj
-          [Tt]est-win/*/*.csproj
-      pack:
-        skip:       true
-      publish:
-        project: |
-          [Ss]rc/*/*.csproj
-          [Ss]rc-win/*/*.csproj
+          [Tt]est-gtk/*/*.csproj
+    macRuntime: ${{ variables.null }}

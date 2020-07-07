@@ -15,7 +15,12 @@
       "type": "shell",
       "group": "build",
       "presentation": {
-        "reveal": "always"
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": true
       },
       "problemMatcher": "$msCompile"
     },
@@ -24,14 +29,19 @@
       "command": "dotnet",
       "args": [
         "build",
-        "sample/THNETII.EtoForms.CmdParserHostedSample.Gtk",
+        "sample-gtk/THNETII.EtoForms.CmdParserHostedSample.Gtk",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary"
       ],
       "type": "shell",
       "group": "build",
       "presentation": {
-        "reveal": "always"
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": true
       },
       "problemMatcher": "$msCompile"
     },
@@ -47,7 +57,12 @@
       "type": "shell",
       "group": "build",
       "presentation": {
-        "reveal": "always"
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": true
       },
       "problemMatcher": "$msCompile"
     },
@@ -63,7 +78,12 @@
       "type": "shell",
       "group": "build",
       "presentation": {
-        "reveal": "always"
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": true
       },
       "problemMatcher": "$msCompile"
     },
@@ -79,7 +99,12 @@
       "type": "shell",
       "group": "build",
       "presentation": {
-        "reveal": "always"
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": true
       },
       "problemMatcher": "$msCompile"
     },
@@ -95,7 +120,12 @@
       "type": "shell",
       "group": "build",
       "presentation": {
-        "reveal": "always"
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": true
       },
       "problemMatcher": "$msCompile"
     },
@@ -104,14 +134,19 @@
       "command": "dotnet",
       "args": [
         "build",
-        "sample/THNETII.EtoForms.HostedSample.Gtk",
+        "sample-gtk/THNETII.EtoForms.HostedSample.Gtk",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary"
       ],
       "type": "shell",
       "group": "build",
       "presentation": {
-        "reveal": "always"
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": true
       },
       "problemMatcher": "$msCompile"
     },
@@ -127,7 +162,12 @@
       "type": "shell",
       "group": "build",
       "presentation": {
-        "reveal": "always"
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": true
       },
       "problemMatcher": "$msCompile"
     },
@@ -143,7 +183,12 @@
       "type": "shell",
       "group": "build",
       "presentation": {
-        "reveal": "always"
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": true
       },
       "problemMatcher": "$msCompile"
     },
@@ -159,7 +204,12 @@
       "type": "shell",
       "group": "build",
       "presentation": {
-        "reveal": "always"
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": true
       },
       "problemMatcher": "$msCompile"
     },
@@ -168,14 +218,19 @@
       "command": "dotnet",
       "args": [
         "build",
-        "sample/THNETII.EtoForms.CrossPlatformSample.Gtk",
+        "sample-gtk/THNETII.EtoForms.CrossPlatformSample.Gtk",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary"
       ],
       "type": "shell",
       "group": "build",
       "presentation": {
-        "reveal": "always"
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": true
       },
       "problemMatcher": "$msCompile"
     },
@@ -191,7 +246,12 @@
       "type": "shell",
       "group": "build",
       "presentation": {
-        "reveal": "always"
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": true
       },
       "problemMatcher": "$msCompile"
     }
