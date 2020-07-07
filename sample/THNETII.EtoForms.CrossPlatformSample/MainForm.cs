@@ -1,4 +1,4 @@
-﻿namespace THNETII.EtoForms.CrossPlatformSample
+namespace THNETII.EtoForms.CrossPlatformSample
 {
     public class MainForm : Eto.Forms.Form
     {

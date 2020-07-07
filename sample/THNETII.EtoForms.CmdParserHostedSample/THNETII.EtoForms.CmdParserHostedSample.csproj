@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <LangVersion>8</LangVersion>
     <OutputType>Exe</OutputType>
     <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
     <TargetFrameworks Condition="'$(NoNetFramework)'!='true'">$(TargetFrameworks);net47</TargetFrameworks>
