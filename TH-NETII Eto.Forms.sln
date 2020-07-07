@@ -1,4 +1,3 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28917.182
@@ -11,6 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitmodules = .gitmodules
 		AllRules.ruleset = AllRules.ruleset
 		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
 		Directory.Meta.props = Directory.Meta.props
 		Directory.Version.props = Directory.Version.props
 		LICENSE = LICENSE
@@ -35,6 +35,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "THNETII.EtoForms.CrossPlatf
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "THNETII.EtoForms.CrossPlatformSample.WinForms", "sample-win\THNETII.EtoForms.CrossPlatformSample.WinForms\THNETII.EtoForms.CrossPlatformSample.WinForms.csproj", "{1C0B93EF-63F5-451D-A8FE-7A8D916883DD}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "THNETII.EtoForms.Logging.LogLevelIcon.Wpf", "sample-win\THNETII.EtoForms.Logging.LogLevelIcon.Wpf\THNETII.EtoForms.Logging.LogLevelIcon.Wpf.csproj", "{47878F96-45DC-4BDA-8D5B-6415A63494DE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "THNETII.EtoForms.Logging", "src\THNETII.EtoForms.Logging\THNETII.EtoForms.Logging.csproj", "{1D36CF7D-A374-4CFA-A8DB-624023C78B6C}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "THNETII.EtoForms.CmdParserHostedSample", "sample\THNETII.EtoForms.CmdParserHostedSample\THNETII.EtoForms.CmdParserHostedSample.csproj", "{BF42A5CA-E18A-4463-8645-89899F530717}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "THNETII.EtoForms.CmdParserHostedSample.WinForms", "sample-win\THNETII.EtoForms.CmdParserHostedSample.WinForms\THNETII.EtoForms.CmdParserHostedSample.WinForms.csproj", "{F232AC1E-CD76-4971-9B38-0E682D6E752E}"
@@ -43,11 +47,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "THNETII.EtoForms.CmdParserH
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample-gtk", "sample-gtk", "{F02A4516-45D3-496F-828C-E0B3BA8ADD13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "THNETII.EtoForms.CmdParserHostedSample.Gtk", "sample-gtk\THNETII.EtoForms.CmdParserHostedSample.Gtk\THNETII.EtoForms.CmdParserHostedSample.Gtk.csproj", "{1C4725D9-368A-4420-9AA9-7F573F26B70A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "THNETII.EtoForms.CmdParserHostedSample.Gtk", "sample-gtk\THNETII.EtoForms.CmdParserHostedSample.Gtk\THNETII.EtoForms.CmdParserHostedSample.Gtk.csproj", "{1C4725D9-368A-4420-9AA9-7F573F26B70A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "THNETII.EtoForms.CrossPlatformSample.Gtk", "sample-gtk\THNETII.EtoForms.CrossPlatformSample.Gtk\THNETII.EtoForms.CrossPlatformSample.Gtk.csproj", "{1ADC7C14-925E-4331-8181-C92C4E3A9D20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "THNETII.EtoForms.CrossPlatformSample.Gtk", "sample-gtk\THNETII.EtoForms.CrossPlatformSample.Gtk\THNETII.EtoForms.CrossPlatformSample.Gtk.csproj", "{1ADC7C14-925E-4331-8181-C92C4E3A9D20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "THNETII.EtoForms.HostedSample.Gtk", "sample-gtk\THNETII.EtoForms.HostedSample.Gtk\THNETII.EtoForms.HostedSample.Gtk.csproj", "{BFE67EA0-DCCA-420D-9D90-819A760928F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "THNETII.EtoForms.HostedSample.Gtk", "sample-gtk\THNETII.EtoForms.HostedSample.Gtk\THNETII.EtoForms.HostedSample.Gtk.csproj", "{BFE67EA0-DCCA-420D-9D90-819A760928F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -131,6 +135,30 @@ Global
 		{1C0B93EF-63F5-451D-A8FE-7A8D916883DD}.Release|x64.Build.0 = Release|Any CPU
 		{1C0B93EF-63F5-451D-A8FE-7A8D916883DD}.Release|x86.ActiveCfg = Release|Any CPU
 		{1C0B93EF-63F5-451D-A8FE-7A8D916883DD}.Release|x86.Build.0 = Release|Any CPU
+		{47878F96-45DC-4BDA-8D5B-6415A63494DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47878F96-45DC-4BDA-8D5B-6415A63494DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47878F96-45DC-4BDA-8D5B-6415A63494DE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{47878F96-45DC-4BDA-8D5B-6415A63494DE}.Debug|x64.Build.0 = Debug|Any CPU
+		{47878F96-45DC-4BDA-8D5B-6415A63494DE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{47878F96-45DC-4BDA-8D5B-6415A63494DE}.Debug|x86.Build.0 = Debug|Any CPU
+		{47878F96-45DC-4BDA-8D5B-6415A63494DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47878F96-45DC-4BDA-8D5B-6415A63494DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47878F96-45DC-4BDA-8D5B-6415A63494DE}.Release|x64.ActiveCfg = Release|Any CPU
+		{47878F96-45DC-4BDA-8D5B-6415A63494DE}.Release|x64.Build.0 = Release|Any CPU
+		{47878F96-45DC-4BDA-8D5B-6415A63494DE}.Release|x86.ActiveCfg = Release|Any CPU
+		{47878F96-45DC-4BDA-8D5B-6415A63494DE}.Release|x86.Build.0 = Release|Any CPU
+		{1D36CF7D-A374-4CFA-A8DB-624023C78B6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D36CF7D-A374-4CFA-A8DB-624023C78B6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D36CF7D-A374-4CFA-A8DB-624023C78B6C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1D36CF7D-A374-4CFA-A8DB-624023C78B6C}.Debug|x64.Build.0 = Debug|Any CPU
+		{1D36CF7D-A374-4CFA-A8DB-624023C78B6C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1D36CF7D-A374-4CFA-A8DB-624023C78B6C}.Debug|x86.Build.0 = Debug|Any CPU
+		{1D36CF7D-A374-4CFA-A8DB-624023C78B6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D36CF7D-A374-4CFA-A8DB-624023C78B6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D36CF7D-A374-4CFA-A8DB-624023C78B6C}.Release|x64.ActiveCfg = Release|Any CPU
+		{1D36CF7D-A374-4CFA-A8DB-624023C78B6C}.Release|x64.Build.0 = Release|Any CPU
+		{1D36CF7D-A374-4CFA-A8DB-624023C78B6C}.Release|x86.ActiveCfg = Release|Any CPU
+		{1D36CF7D-A374-4CFA-A8DB-624023C78B6C}.Release|x86.Build.0 = Release|Any CPU
 		{BF42A5CA-E18A-4463-8645-89899F530717}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BF42A5CA-E18A-4463-8645-89899F530717}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF42A5CA-E18A-4463-8645-89899F530717}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -214,6 +242,8 @@ Global
 		{8C6E9E6B-6659-4A47-AA72-C81E107003A8} = {C991FA74-33CC-4AE8-9A9B-267D8B25A2BE}
 		{78BEE166-8C45-41E7-8CA6-C4A4FBD50988} = {E6DFFFDA-5B10-46C7-A95A-DF0BF0C6E62C}
 		{1C0B93EF-63F5-451D-A8FE-7A8D916883DD} = {C991FA74-33CC-4AE8-9A9B-267D8B25A2BE}
+		{47878F96-45DC-4BDA-8D5B-6415A63494DE} = {C991FA74-33CC-4AE8-9A9B-267D8B25A2BE}
+		{1D36CF7D-A374-4CFA-A8DB-624023C78B6C} = {5D20A5ED-BC45-43E7-B8F7-C97C21F40E87}
 		{BF42A5CA-E18A-4463-8645-89899F530717} = {E6DFFFDA-5B10-46C7-A95A-DF0BF0C6E62C}
 		{F232AC1E-CD76-4971-9B38-0E682D6E752E} = {C991FA74-33CC-4AE8-9A9B-267D8B25A2BE}
 		{7563405A-4F0D-4DE6-BEA4-FF4D0F2E5274} = {C991FA74-33CC-4AE8-9A9B-267D8B25A2BE}
